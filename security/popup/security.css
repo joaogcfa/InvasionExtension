@@ -1,4 +1,17 @@
-html,
+html, body {
+    width: 500px;
+  }
+  
+  .panel {
+    padding: 5px;
+  }
+  
+  li {
+    margin-bottom: 5px;
+  }
+  
+
+/* html,
 body {
     height: 500px;
     width: 500px;
@@ -23,4 +36,4 @@ body {
 .texto {
     color: black;
     font-size: 3rem;
-}
+} */

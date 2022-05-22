@@ -15,7 +15,7 @@ function removeEverything() {
 
 function insertText() {
     var content = document.createElement("p");
-    content.textContent = "ABRIIIIUUU";
+    content.textContent = "aquii ta entrando";
     document.body.appendChild(content);
     document.body.setAttribute("class", "text");
 }
