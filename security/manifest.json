@@ -12,11 +12,20 @@
         "https://*/*",
         "tabs",
         "cookies",
-        "<all_urls>"
+        "<all_urls>",
+        "storage",
+        "localStorage"
     ],
     "browser_action": {
         "default_icon": "icons/padlock.png",
         "default_title": "Security",
         "default_popup": "popup/security.html"
-    }
+    },
+
+    "content_scripts": [
+        {
+          "matches": ["*://*/*"],
+          "js": ["popup/listener.js"]
+        }
+    ]
 }

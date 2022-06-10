@@ -1,40 +1,43 @@
-function getStorage(tabs) {
+var storage=0;
+async function getStorage(tabs) {
+
 
     let tab = tabs.pop();
 
-    var activeTabUrl = document.getElementById('header-title');
-    var text = document.createTextNode("Local Storage: "+tab.title);
+    var activeTabUrl = document.getElementById('header-stg');
+    var text = document.createTextNode("Local Storage");
     var list = document.getElementById('storage-list');
     var p = document.createElement("p");
     activeTabUrl.appendChild(text);
- 
 
-    var total = 0;
-    for (var x in localStorage) {
-        // // Value is multiplied by 2 due to data being stored in `utf-16` format, which requires twice the space.
-        // var amount = (localStorage[x].length * 2) / 1024 / 1024;
-        // total += amount;
-        total += 1;
-    }
-    // var values = []
-    // keys = Object.keys(window.localStorage)
+    
+   
 
-    // while ( i-- ) {
-    //     values.push( localStorage.getItem(keys[i]) );
-    // }
+    const response = await browser.tabs.sendMessage(tab.id, { 
+        method: "localStorageData"
+      });
+    
+
+
 
     let li = document.createElement("li");
-    let content = document.createTextNode(total);
+    let content = document.createTextNode(response.data.length);
     li.appendChild(content);
     list.appendChild(li);
 
-    // return values;
+    
+
+    storage= response.data.length;
+   
 }
 
 
 function Tab() {
+   
     return browser.tabs.query({currentWindow: true, active: true});
   }
+
+
  
-  Tab().then(getStorage);
+Tab().then(getStorage);
   
