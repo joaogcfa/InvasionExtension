@@ -7,6 +7,9 @@ async function getStorage(tabs) {
     var activeTabUrl = document.getElementById('header-stg');
     var text = document.createTextNode("Local Storage");
     var list = document.getElementById('storage-list');
+    list.className="content";
+    list.id="stg-id";
+
     var p = document.createElement("p");
     activeTabUrl.appendChild(text);
 
@@ -20,8 +23,11 @@ async function getStorage(tabs) {
 
 
 
-    let li = document.createElement("li");
+    var li = document.createElement("div");
+    
     let content = document.createTextNode(response.data.length);
+    li.id="cookie_id";
+
     li.appendChild(content);
     list.appendChild(li);
 
@@ -37,7 +43,11 @@ function Tab() {
     return browser.tabs.query({currentWindow: true, active: true});
   }
 
+document.addEventListener("DOMContentLoaded", function(event) { 
+    //do work
+    Tab().then(getStorage);
+
+  });
+ 
 
  
-Tab().then(getStorage);
-  

@@ -1,19 +1,45 @@
-function getScore(tabs) {
-    let tab = tabs.pop();
+
+async function getScore(tabs) {
+  let tab = tabs.pop();
+
+   
 
     var activeTabUrl = document.getElementById('header-score');
-    var conn= window.performance.getEntries()
-    var text = document.createTextNode("Score: ");
-    var connList = document.getElementById('score-list');
+    var text = document.createTextNode("Score ");
+    var scoreList = document.getElementById('score-list');
+    // scoreList.className="content";
+
     var p = document.createElement("p");
     activeTabUrl.appendChild(text);
-
-    const cookies = document.getElementById("header-title");
+    const response = await browser.tabs.sendMessage(tab.id, { 
+      method: "localStorageData"
+    });
   
-    let li = document.createElement("li");
-    let content = document.createTextNode(cookies.textContent);
+
+    const cookies = document.getElementById("cookies-id");
+    const conn = document.getElementById("conn-id");
+    const stg = document.getElementById("stg-id");
+
+ 
+
+    var total = Number(cookies.textContent)+Number(conn.textContent)+  Number(stg.textContent);
+   
+
+
+    if(total> 33 && total <66){
+      scoreList.className="yellow_color";
+    }else if( total>= 66){
+      scoreList.className="red_color";
+    }else{
+      scoreList.className="green_color";
+
+    }
+
+  
+    let li = document.createElement("div");
+    let content = document.createTextNode(total);
     li.appendChild(content);
-    connList.appendChild(li);
+    scoreList.appendChild(li);
   }
 
 
@@ -22,7 +48,10 @@ function Tab() {
     return browser.tabs.query({currentWindow: true, active: true});
   }
 
+document.addEventListener("DOMContentLoaded", function(event) { 
+    //do work
+    Tab().then(getScore);
 
+  });
  
-Tab().then(getScore);
  

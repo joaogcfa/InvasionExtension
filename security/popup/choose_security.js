@@ -9,6 +9,9 @@ function getCookies(tabs) {
      var activeTabUrl = document.getElementById('header-title');
      var text = document.createTextNode("Cookies");
      var cookieList = document.getElementById('cookie-list');
+     cookieList.className="content";
+     cookieList.id="cookies-id";
+
      var p = document.createElement("p");
      activeTabUrl.appendChild(text);
  
@@ -17,19 +20,17 @@ function getCookies(tabs) {
        for (let cookie of cookies) {
          count++;
        }
-      let li = document.createElement("li");
+      let li = document.createElement("div");
       let content = document.createTextNode(count);
-      content.id ="cookies-id";
+     
       li.appendChild(content);
       cookieList.appendChild(li);
        
      } else {
-       let p = document.createElement("p");
-       let content = document.createTextNode("No cookies in this tab.");
-       let parent = cookieList.parentNode;
- 
-       p.appendChild(content);
-       parent.appendChild(p);
+       let li = document.createElement("div");
+       let content = document.createTextNode(0);
+       li.appendChild(content);
+       cookieList.appendChild(li);
      }
 
      cookies=count;

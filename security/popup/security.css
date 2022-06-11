@@ -1,5 +1,7 @@
 html, body {
-    width: 100px;
+    width: 350px;
+    background-color:#392d69 ;
+    
   }
   
   .panel {
@@ -10,6 +12,74 @@ html, body {
     margin-bottom: 5px;
   }
   
+  
+
+  .vortx{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+  }
+
+  .text{
+
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 35px;
+    height: 20px;
+    color:#ffae42;
+  }
+
+ 
+  .panel{
+
+    display: flex;
+    flex-direction: row;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 20px;
+    color:#ffae42;
+  }
+  .content{
+
+    color:#ffae42;
+    margin-left: 50px;
+    font-family: 'Courier New', Courier, monospace;
+
+    font-size: 22px;
+    font-weight: bold;
+ 
+  }
+
+  .line{
+    color:#ffae42;
+    width: 350px;
+  }
+
+  .red_color{
+    margin-left: 50px;
+    font-family: 'Courier New', Courier, monospace;
+
+    font-size: 22px;
+    font-weight: bold;
+    color: red;
+  }
+  .green_color{
+    margin-left: 50px;
+    font-family: 'Courier New', Courier, monospace;
+
+    font-size: 22px;
+    font-weight: bold;
+    color: green;
+  }
+  .yellow_color{
+    margin-left: 50px;
+    font-family: 'Courier New', Courier, monospace;
+
+    font-size: 22px;
+    font-weight: bold;
+    color: yellow;
+  }
+
+
 
 /* html,
 body {

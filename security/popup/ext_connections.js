@@ -6,6 +6,10 @@ function getConnections(tabs) {
     var conn= window.performance.getEntries()
     var text = document.createTextNode("External Connections");
     var connList = document.getElementById('conn-list');
+    connList.className="content";
+    connList.id="conn-id";
+
+
     var p = document.createElement("p");
     activeTabUrl.appendChild(text);
 
@@ -26,7 +30,7 @@ function getConnections(tabs) {
 
     }
   
-    let li = document.createElement("li");
+    let li = document.createElement("div");
     let content = document.createTextNode(count);
     li.appendChild(content);
     connList.appendChild(li);
@@ -38,6 +42,12 @@ function getConnections(tabs) {
   function Tab() {
     return browser.tabs.query({currentWindow: true, active: true});
   }
+
+  document.addEventListener("DOMContentLoaded", function(event) { 
+    //do work
+    Tab().then(getConnections);
+
+  });
  
-  Tab().then(getConnections);
+ 
   
